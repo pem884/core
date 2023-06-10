@@ -2,6 +2,10 @@
   "name": "Home Assistant Dev",
   "context": "..",
   "dockerFile": "../Dockerfile.dev",
+  "mounts": [
+    // Custom configuration directory
+    "source=${localEnv:HOME}/repos/HADevConfig,target=${containerWorkspaceFolder}/config,type=bind"
+  ],
   "postCreateCommand": "script/setup",
   "postStartCommand": "script/bootstrap",
   "containerEnv": { "DEVCONTAINER": "1" },
